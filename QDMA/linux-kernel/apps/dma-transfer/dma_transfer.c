@@ -48,6 +48,7 @@ static int do_transfer(char *dev, uint64_t addr, const char *filename) {
     return -1;
   }
   input_size = lseek(ifile, 0, SEEK_END);
+  lseek(ifile, 0, SEEK_SET);
   posix_memalign((void **)&buffer, page_size, MAX_TRANSFER_SIZE + page_size);
   if (!buffer) {
     rc = -ENOMEM;
